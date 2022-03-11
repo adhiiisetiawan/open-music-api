@@ -2,6 +2,12 @@
 class AlbumsHandler {
   constructor(service) {
     this._service = service;
+
+    this.postAlbumHandler = this.postAlbumHandler.bind(this);
+    this.getAlbumsHandler = this.getAlbumsHandler.bind(this);
+    this.getAlbumByIdHandler = this.getAlbumByIdHandler.bind(this);
+    this.putAlbumByIdHandler = this.putAlbumByIdHandler.bind(this);
+    this.deleteAlbumByIdHandler = this.deleteAlbumByIdHandler.bind(this);
   }
 
   postAlbumHandler(request, h) {
@@ -39,7 +45,7 @@ class AlbumsHandler {
     };
   }
 
-  getAlbumByIdHandler(request) {
+  getAlbumByIdHandler(request, h) {
     try {
       const {id} = request.params;
       const album = this._service.getAlbumById(id);
@@ -59,7 +65,7 @@ class AlbumsHandler {
     }
   }
 
-  putAlbumByIdHandler(request) {
+  putAlbumByIdHandler(request, h) {
     try {
       const {id} = request.params;
 
@@ -79,7 +85,7 @@ class AlbumsHandler {
     }
   }
 
-  deleteAlbumByIdHandler(request) {
+  deleteAlbumByIdHandler(request, h) {
     try {
       const {id} = request.params;
       this._service.deleteAlbumById(id);
