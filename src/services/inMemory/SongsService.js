@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const {nanoid} = require('nanoid');
 
 /* eslint-disable require-jsdoc */
@@ -10,7 +11,7 @@ class SongsService {
     const id = nanoid(16);
 
     const newSong = {
-      title, year, genre, performer, duration, albumId, id,
+      id, title, year, genre, performer, duration, albumId,
     };
 
     this._songs.push(newSong);
@@ -25,11 +26,11 @@ class SongsService {
   }
 
   getSongs() {
-    return this._songs;
+    return this._songs.map(({id, title, performer}) => ({id, title, performer}));
   }
 
   getSongById(id) {
-    const song = this._songs.fill((s) => s.id === id)[0];
+    const song = this._songs.filter((s) => s.id === id)[0];
     if (!song) {
       throw new Error('Lagu tidak ditemukan');
     }
