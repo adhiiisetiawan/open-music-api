@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
-
+/* eslint-disable require-jsdoc */
 const ClientError = require('../../exceptions/ClientError');
 
-/* eslint-disable require-jsdoc */
+
 class SongsHandler {
   constructor(service, validator) {
     this._service = service;
